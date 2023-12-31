@@ -1,0 +1,5 @@
+.portfolio_card_container:hover > .portfolio_card_footer {
+  background-color: black;
+  color: white;
+  transition: all ease-in-out 0.3s;
+}
