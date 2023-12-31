@@ -1,20 +1,9 @@
-const http = require("http");
-const express = require("express");
-const next = require("next");
-
-const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
-const handle = app.getRequestHandler();
-
-app.prepare().then(() => {
-  const server = express();
-
-  server.use((req, res) => {
-    return handle(req, res);
-  });
-
-  http.createServer(server).listen(3000, (err) => {
-    if (err) throw err;
-    console.log(err)
-  });
+var http = require('http');
+var server = http.createServer(function(req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    var message = './src/app/page.js',
+        version = 'NodeJS ' + process.versions.node + '\n',
+        response = [message, version].join('\n');
+    res.end(response);
 });
+server.listen();
